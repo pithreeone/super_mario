@@ -8,7 +8,7 @@ import argparse
 from nes_py.wrappers import JoypadSpace
 import gym_super_mario_bros
 from gym_super_mario_bros.actions import COMPLEX_MOVEMENT
-env = gym_super_mario_bros.make('SuperMarioBros-v0', apply_api_compatibility=True, render_mode="human")
+env = gym_super_mario_bros.make('SuperMarioBros-v0')
 env = JoypadSpace(env, COMPLEX_MOVEMENT)
 
 # initializing agent
@@ -42,8 +42,8 @@ for episode in tqdm(range(2), desc="Evaluating"):
     while True:
         action = agent.act(obs) 
 
-        obs, reward, terminated, truncated, info = env.step(action)
-        done = terminated or truncated
+        obs, reward, done, info = env.step(action)
+        # done = terminated or truncated
         episode_reward += reward
 
         if time.time() - start_time > time_limit:
