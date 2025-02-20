@@ -1,0 +1,28 @@
+name: Python Application Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: 1. Creating virtual env
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: 2. Installing dependencies
+      run: |
+        pip install gym==0.23.1 && pip install gym-super-mario-bros
+        pip install -r requirements.txt
+    - name: 4. Running your code & Pushing to Leaderboard
+      run: python eval.py --token a91aae52cff9ef65932db06b150ffd47
