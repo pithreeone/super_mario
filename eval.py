@@ -34,7 +34,7 @@ total_time = 0
 agent = Agent()
 time_limit = 120
 
-for episode in tqdm(range(2), desc="Evaluating"):
+for episode in tqdm(range(1), desc="Evaluating"):
     obs = env.reset()
     start_time = time.time()
     episode_reward = 0
