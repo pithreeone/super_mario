@@ -1,6 +1,5 @@
 import cv2
 import gym
-import pygame
 import random
 import numpy as np
 import json
@@ -315,10 +314,6 @@ if __name__ == '__main__':
     env = make_env()
     # env = gym.make('SuperMarioBros-v0', apply_api_compatibility=True, render_mode='rgb_array')
     # env = JoypadSpace(env, COMPLEX_MOVEMENT)
-
-    # Initialize pygame
-    pygame.init()
-    # obs = env.reset()
 
     # print("Available actions and their corresponding indices:")
     for i, action in enumerate(COMPLEX_MOVEMENT):

@@ -1,5 +1,4 @@
 import cv2
-import pygame
 import random
 import json
 import numpy as np
@@ -21,8 +20,6 @@ from gym.wrappers import FrameStack, ResizeObservation, GrayScaleObservation
 from gym_super_mario_bros.actions import COMPLEX_MOVEMENT
 
 from nes_py.wrappers import JoypadSpace
-from tensordict import TensorDict
-from torchrl.data import TensorDictReplayBuffer, LazyMemmapStorage
 
 # define the replay memory save type
 Transition = namedtuple('Transition', ['state', 'action', 'reward', 'next_state', 'done'])
@@ -397,7 +394,7 @@ if __name__ == '__main__':
     # Initialize environment
     env = make_env()
     # Initialize pygame
-    pygame.init()
+    # pygame.init()
 
     episodes = 20000
     train(env, episodes)
